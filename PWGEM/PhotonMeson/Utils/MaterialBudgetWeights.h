@@ -20,22 +20,21 @@
 #define PWGEM_PHOTONMESON_UTILS_MATERIALBUDGETWEIGHTS_H_
 
 #include "PWGEM/PhotonMeson/DataModel/gammaTables.h"
-#include <CCDB/BasicCCDBManager.h>
 
 #include "Framework/ASoAHelpers.h"
 #include "Framework/AnalysisDataModel.h"
 #include "Framework/AnalysisTask.h"
 #include "Framework/Logger.h"
+#include <CCDB/BasicCCDBManager.h>
 #include <Framework/Configurable.h>
 #include <Framework/InitContext.h>
-
 
 using namespace o2;
 using namespace o2::soa;
 using namespace o2::framework;
 
 using MyV0PhotonsMB = o2::soa::Join<o2::aod::V0PhotonsKF, o2::aod::V0KFEMEventIds>;
-using MyV0PhotonMB  = MyV0PhotonsMB::iterator;
+using MyV0PhotonMB = MyV0PhotonsMB::iterator;
 
 struct MaterialBudgetWeights {
   Produces<aod::V0PhotonOmegaMBWeights> omegaMBWeight;
@@ -90,6 +89,5 @@ struct MaterialBudgetWeights {
     omegaMBWeight(computeMBWeight(v0.v0radius()));
   }
 };
-
 
 #endif // PWGEM_PHOTONMESON_UTILS_MATERIALBUDGETWEIGHTS_H_

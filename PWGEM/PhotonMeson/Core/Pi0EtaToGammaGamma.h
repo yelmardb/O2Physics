@@ -227,7 +227,8 @@ struct Pi0EtaToGammaGamma {
   // Preslices and partitions
   o2::framework::SliceCache cache;
   o2::framework::PresliceOptional<
-  o2::soa::Filtered<o2::soa::Join<o2::aod::V0PhotonsKF, o2::aod::V0KFEMEventIds, o2::aod::V0PhotonsKFPrefilterBitDerived, o2::aod::V0PhotonOmegaMBWeights>>> perCollision_pcm = o2::aod::v0photonkf::emeventId;
+    o2::soa::Filtered<o2::soa::Join<o2::aod::V0PhotonsKF, o2::aod::V0KFEMEventIds, o2::aod::V0PhotonsKFPrefilterBitDerived, o2::aod::V0PhotonOmegaMBWeights>>>
+    perCollision_pcm = o2::aod::v0photonkf::emeventId;
   o2::framework::PresliceOptional<o2::soa::Join<o2::aod::EmEmcClusters, o2::aod::EMCEMEventIds>> perCollision_emc = o2::aod::emccluster::emeventId;
   o2::framework::PresliceOptional<o2::soa::Join<o2::aod::PHOSClusters, o2::aod::PHOSEMEventIds>> perCollision_phos = o2::aod::phoscluster::emeventId;
   o2::framework::PresliceOptional<o2::soa::Filtered<o2::soa::Join<o2::aod::EMPrimaryElectronsFromDalitz, o2::aod::EMPrimaryElectronEMEventIds, o2::aod::EMPrimaryElectronsPrefilterBitDerived>>> perCollision_electron = o2::aod::emprimaryelectron::emeventId;
@@ -839,8 +840,8 @@ struct Pi0EtaToGammaGamma {
               used_dileptonIds_per_col.emplace_back(tuple_tmp_id2);
             }
             ndiphoton++;
-          } // end of dielectron loop
-        } // end of g1 loop
+          }    // end of dielectron loop
+        }      // end of g1 loop
       } else { // PCM-PCM, EMC-EMC, PHOS-PHOS, PCM-EMC and PCM-PHOS.
         auto photons1_per_collision = photons1.sliceByCached(TDetectorTag1::perCollision(), collision.globalIndex(), cache);
         auto photons2_per_collision = photons2.sliceByCached(TDetectorTag2::perCollision(), collision.globalIndex(), cache);
@@ -900,7 +901,7 @@ struct Pi0EtaToGammaGamma {
           }
           ndiphoton++;
         } // end of pairing loop
-      } // end of pairing in same event
+      }   // end of pairing in same event
 
       used_photonIds_per_col.clear();
       used_photonIds_per_col.shrink_to_fit();
