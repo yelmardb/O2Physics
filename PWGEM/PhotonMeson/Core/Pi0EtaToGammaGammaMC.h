@@ -700,14 +700,14 @@ struct Pi0EtaToGammaGammaMC {
           }
           if (alphaMeson > alphaCut) {
             continue;
-          float wpair = weight;
+            float wpair = weight;
 
-          if constexpr (requires { g1.omegaMBWeight(); }) {
-            wpair *= g1.omegaMBWeight();
-          }
-          if constexpr (requires { g2.omegaMBWeight(); }) {
-            wpair *= g2.omegaMBWeight();
-          }
+            if constexpr (requires { g1.omegaMBWeight(); }) {
+              wpair *= g1.omegaMBWeight();
+            }
+            if constexpr (requires { g2.omegaMBWeight(); }) {
+              wpair *= g2.omegaMBWeight();
+            }
 
           if (pairtype == o2::aod::pwgem::photonmeson::photonpair::PairType::kEMCEMC) {
             float openingAngle = std::acos(v1.Vect().Dot(v2.Vect()) / (v1.P() * v2.P()));
@@ -813,8 +813,8 @@ struct Pi0EtaToGammaGammaMC {
               }
               o2::aod::pwgem::photonmeson::utils::nmhistogram::fillTruePairInfo(&fRegistry, veeg, etamc, mcparticles, mccollisions, f1fd_k0s_to_pi0, weight);
             }
-          }    // end of dielectron loop
-        }      // end of pcm loop
+          } // end of dielectron loop
+        } // end of pcm loop
       } else { // PCM-EMC, PCM-PHOS.
         // TODO: implement proper functionality if we ever want to run this in Pb-Pb
         auto photons1_per_collision = photons1.sliceByCached(TDetectorTag1::perCollision(), collision.globalIndex(), cache);
@@ -861,8 +861,8 @@ struct Pi0EtaToGammaGammaMC {
           //   o2::aod::pwgem::photonmeson::utils::nmhistogram::fillTruePairInfo(&fRegistry, v12, etamc, mcparticles, mccollisions, f1fd_k0s_to_pi0, weight);
           // }
         } // end of pairing loop
-      }   // end of pairing in same event
-    }     // end of collision loop
+      } // end of pairing in same event
+      } // end of collision loop
   }
 
   template <int par_id, typename TBinnedData>
